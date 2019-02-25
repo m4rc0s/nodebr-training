@@ -1,11 +1,11 @@
 
-function obterUsuario() {
+function obterUsuario(callback) {
     setTimeout(function() {
-        return {
+        return callback(null,{
             id: 1,
             nome: 'Belial',
             dataNascimento: new Date()
-        }
+        })
     }, 1000)
 }
 
@@ -20,8 +20,12 @@ function obterTelefone(idUsuario) {
 
 function obterEndereco(idUsuario) { }
 
-const usuario = obterUsuario();
+function resolverUsuario(erro, usuario) {
+    console.log('usuario: ', usuario);
+}
+
+obterUsuario(resolverUsuario);
 //const telefone = obterTelefone();
 
-console.log('usuario: ', usuario);
-//console.log(telefone);
+// console.log('usuario: ', usuario);
+// console.log(telefone);
